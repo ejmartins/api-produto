@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: api
 spec:
-  replicas: 20
+  replicas: 2
   selector:
     matchLabels:
       app: api
@@ -15,6 +15,13 @@ spec:
       containers:
       - name: api
         image: ejmartins/api-produto:v1
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "100m"
+          limits:
+            memory: "64Mi"
+            cpu: "200m"
         livenessProbe:
           httpGet:
             path: /health
