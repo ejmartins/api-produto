@@ -19,6 +19,15 @@ spec:
           httpGet:
             path: /health
             port: 8080
+        readinessProbe:
+          httpGet:
+            path: /read
+            port: 8080
+          initialDelaySeconds: 0
+          periodSeconds: 10
+          timeoutSeconds: 1
+          successThreshold: 3
+          failureThreshold: 1
         ports:
           - containerPort: 8080
         env:
